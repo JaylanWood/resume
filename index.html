@@ -24,8 +24,8 @@
 	</div>
 
 	<!-- 导航栏 -->
-	<div class="topNavBarOutside">
-		<div class="topNavBar clearfix">
+	<div id="topNavBar" class="topNavBar">
+		<div class="topNavBarInner clearfix">
 
 			<a class="logo" href="#" alt="logo">
 				<span class="rs">RS</span><span class="card">card</span>
@@ -194,9 +194,11 @@
 	<script src="./js/main.js"></script>
 	<script src="//at.alicdn.com/t/font_1320333_uh02xuf8zk.js"></script>
 	<script>
-		setTimeout(function () {
-			webWelcome.classList.remove('active')
-		}, 1000)
+		//加载动画
+		webWelcome.classList.remove('active')
+		// setTimeout(function () {
+		// 	webWelcome.classList.remove('active')
+		// }, 1000)
 	</script>
 </body>
 
