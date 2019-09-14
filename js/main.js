@@ -10,4 +10,3 @@ portfolio3.onclick = function () {
 }
 
 
-//滚动到指定元素

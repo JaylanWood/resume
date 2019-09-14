@@ -33,17 +33,17 @@
 
 			<nav class="menu">
 				<ul class="clearfix">
-					<li><a href="#">关于</a></li>
-					<li><a href="#">技能</a></li>
+					<li><a href="#about">关于</a></li>
+					<li><a href="#skills">技能</a></li>
 					<li>
-						<a href="#">作品</a>
+						<a href="#portfolio">作品</a>
 						<ul class="submenu">
 							<li><a href="#">作品1</a></li>
 							<li><a href="#">作品2</a></li>
 							<li><a href="#">作品3</a></li>
 						</ul>
 					</li>
-					<li><a href="#">博客</a>
+					<li><a href="#blog">博客</a>
 						<ul class="submenu">
 							<li><a href="#">博客1</a></li>
 							<li><a href="#">博客2</a></li>
@@ -64,7 +64,7 @@
 	<!-- 主要内容main -->
 	<main>
 		<!-- userCard -->
-		<div class="userCard cardShadow">
+		<div id="about" class="userCard cardShadow">
 
 			<div class="pictureAndText clearfix">
 
@@ -137,7 +137,7 @@
 	</main>
 	<!-- 技能 -->
 	<section class="skills">
-		<h2>技能</h2>
+		<h2 id="skills">技能</h2>
 		<div class="skillCard cardShadow">
 			<ul class="clearfix">
 				<li>
@@ -180,7 +180,7 @@
 		</div>
 	</section>
 	<!-- 作品集 -->
-	<section class="portfolio">
+	<section id="portfolio" class="portfolio">
 		<h2>作品集</h2>
 		<nav>
 			<ul>
@@ -214,7 +214,6 @@
 		}, 1000)
 		//会变的topNavBar
 		window.onscroll = function (xxx) {
-			console.log(window.scrollY)
 			window.scrollY > 0 ? topNavBar.classList.add('sticky') : topNavBar.classList.remove('sticky')
 		}
 		//topNavBar激活hover停悬列表
@@ -225,6 +224,18 @@
 			}
 			liTags[i].onmouseleave = function (x) {
 				x.currentTarget.classList.remove('active')
+			}
+		}
+		//滚动到指定元素
+		let aTags = document.querySelectorAll('nav.menu>ul>li>a')
+		for (let i = 0; i < aTags.length; i++) {
+			aTags[i].onclick = function (xxx) {
+				xxx.preventDefault()
+				let a = xxx.currentTarget
+				let href = a.getAttribute('href')
+				let element = document.querySelector(href)
+				let top = element.offsetTop
+				window.scrollTo(0, top - 80)
 			}
 		}
 	</script>
