@@ -19,6 +19,10 @@
 </head>
 
 <body>
+	<div class="webWelcome active" id="webWelcome">
+		<div class="loading"></div>
+	</div>
+
 	<!-- 导航栏 -->
 	<div class="topNavBarOutside">
 		<div class="topNavBar clearfix">
@@ -189,6 +193,11 @@
 	</section>
 	<script src="./js/main.js"></script>
 	<script src="//at.alicdn.com/t/font_1320333_uh02xuf8zk.js"></script>
+	<script>
+		setTimeout(function () {
+			webWelcome.classList.remove('active')
+		}, 1000)
+	</script>
 </body>
 
 </html>
