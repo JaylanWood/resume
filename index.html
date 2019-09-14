@@ -31,12 +31,26 @@
 				<span class="rs">RS</span><span class="card">card</span>
 			</a>
 
-			<nav>
+			<nav class="menu">
 				<ul class="clearfix">
 					<li><a href="#">关于</a></li>
 					<li><a href="#">技能</a></li>
-					<li><a href="#">作品</a></li>
-					<li><a href="#">博客</a></li>
+					<li>
+						<a href="#">作品</a>
+						<ul class="submenu">
+							<li><a href="#">作品1</a></li>
+							<li><a href="#">作品2</a></li>
+							<li><a href="#">作品3</a></li>
+						</ul>
+					</li>
+					<li><a href="#">博客</a>
+						<ul class="submenu">
+							<li><a href="#">博客1</a></li>
+							<li><a href="#">博客2</a></li>
+							<li><a href="#">博客3</a></li>
+
+						</ul>
+					</li>
 					<li><a href="#">日历</a></li>
 					<li><a href="#">联系方式</a></li>
 					<li><a href="#">其他</a></li>
@@ -198,6 +212,21 @@
 		setTimeout(function () {
 			webWelcome.classList.remove('active')
 		}, 1000)
+		//会变的topNavBar
+		window.onscroll = function (xxx) {
+			console.log(window.scrollY)
+			window.scrollY > 0 ? topNavBar.classList.add('sticky') : topNavBar.classList.remove('sticky')
+		}
+		//topNavBar激活hover停悬列表
+		let liTags = document.querySelectorAll('nav.menu>ul>li')
+		for (let i = 0; i < liTags.length; i++) {
+			liTags[i].onmouseenter = function (x) {
+				x.currentTarget.classList.add('active')
+			}
+			liTags[i].onmouseleave = function (x) {
+				x.currentTarget.classList.remove('active')
+			}
+		}
 	</script>
 </body>
 

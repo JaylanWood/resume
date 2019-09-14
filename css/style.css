@@ -113,16 +113,17 @@ h3 {
 	float: right;
 }
 
-.topNavBar nav ul {
+.topNavBar nav>ul {
 	list-style: none;
 }
 
-.topNavBar nav ul li {
+.topNavBar nav>ul>li {
 	float: left;
 	margin: 0px 17px;
+	position: relative;
 }
 
-.topNavBar nav ul li a {
+.topNavBar nav>ul>li>a {
 	font-size: 12px;
 	text-decoration: none;
 	font-weight: bold;
@@ -131,10 +132,59 @@ h3 {
 	border-right: 0px;
 	padding: 5px 0px;
 	display: block;
+	position: relative;
 }
 
-.topNavBar nav ul li a:hover {
-	border-bottom: 3px solid #e06567;
+.topNavBar nav>ul>li.active>a::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	background-color: #e06567;
+	height: 3px;
+	animation: menuSlide 0.3s;
+}
+
+@keyframes menuSlide {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
+.topNavBar .submenu {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 100%;
+	background-color: #FFFFFF;
+	color: #3D4451;
+	font-size: 0.5em;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+}
+
+.topNavBar li.active>.submenu {
+	display: block;
+	animation: submenuSlide 0.3s;
+}
+
+@keyframes submenuSlide {
+	0% {
+		margin-right: 100%;
+	}
+	100% {
+		margin-right: 0%;
+	}
+}
+
+.topNavBar .submenu>li {
+	white-space: nowrap;
+	padding: 5px 10px;
 }
 
 .topNavBar .logo {
