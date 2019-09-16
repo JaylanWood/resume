@@ -206,7 +206,8 @@
 			</div>
 		</div>
 	</section>
-
+	<!-- cdnjs的tween.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<script src="./js/main.js"></script>
 	<!-- 阿里图标 -->
 	<script src="//at.alicdn.com/t/font_1320333_uh02xuf8zk.js"></script>
@@ -232,6 +233,7 @@
 		}
 		//自制topNavBar的a跳转锚点功能
 		let aTags = document.querySelectorAll('nav.menu>ul>li>a')
+
 		for (let i = 0; i < aTags.length; i++) {
 			aTags[i].onclick = function (xxx) {
 				xxx.preventDefault()
@@ -239,26 +241,44 @@
 				let href = a.getAttribute('href')
 				let element = document.querySelector(href)
 				let top = element.offsetTop
+				//用tween缓动做跳转动画
+				function animate(time) {
+					requestAnimationFrame(animate);
+					TWEEN.update(time);
+				}
+				requestAnimationFrame(animate);
 
-				//自己做跳转动画
-				var n = 25
-				var duration = 500 / n
 				var currentTop = window.scrollY
 				var targetTop = top - 80
-				var distance = (targetTop - currentTop) / n
-				var id = setInterval(function () {
-					if (n === 0) {
-						window.clearInterval(id)
-						return
-					}
-					n = n - 1
-					window.scrollTo(0, currentTop + distance * (25 - n))
-				}, duration);
+
+				const coords = { y: currentTop };
+				const tween = new TWEEN.Tween(coords)
+					.to({ y: targetTop }, 500)
+					.easing(TWEEN.Easing.Quadratic.InOut)
+					.onUpdate(() => {
+						window.scrollTo(0, coords.y)
+					})
+					.start();
+				//自己做跳转动画
+				// var n = 25
+				// var duration = 500 / n
+				// var currentTop = window.scrollY
+				// var targetTop = top - 80
+				// var distance = (targetTop - currentTop) / n
+				// var id = setInterval(function () {
+				// 	if (n === 0) {
+				// 		window.clearInterval(id)
+				// 		return
+				// 	}
+				// 	n = n - 1
+				// 	window.scrollTo(0, currentTop + distance * (25 - n))
+				// }, duration);
 			}
 		}
 
-		//用tween缓动做跳转动画
-		//滚动页面，高亮显示相应div、对应的a下划线、
+
+
+		//滚动页面，高亮显示相应div、对应的a下划线
 		//滚动页面，相应div上移动画
 	</script>
 </body>
