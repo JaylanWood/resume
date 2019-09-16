@@ -250,10 +250,13 @@
 
 				var currentTop = window.scrollY
 				var targetTop = top - 80
-
+				var time = Math.abs((targetTop - currentTop) / 100 * 500)
+				if (time > 500) {
+					time = 500
+				}
 				const coords = { y: currentTop };
 				const tween = new TWEEN.Tween(coords)
-					.to({ y: targetTop }, 500)
+					.to({ y: targetTop }, time)
 					.easing(TWEEN.Easing.Quadratic.InOut)
 					.onUpdate(() => {
 						window.scrollTo(0, coords.y)
