@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>简历</title>
 	<link rel="stylesheet" href="css/style.css">
+	<!-- 阿里图标 -->
 	<style type="text/css">
 		.icon {
 			width: 1em;
@@ -19,10 +20,10 @@
 </head>
 
 <body>
+	<!-- 加载动画 -->
 	<div class="webWelcome active" id="webWelcome">
 		<div class="loading"></div>
 	</div>
-
 	<!-- 导航栏 -->
 	<div id="topNavBar" class="topNavBar">
 		<div class="topNavBarInner clearfix">
@@ -205,18 +206,21 @@
 			</div>
 		</div>
 	</section>
+
 	<script src="./js/main.js"></script>
+	<!-- 阿里图标 -->
 	<script src="//at.alicdn.com/t/font_1320333_uh02xuf8zk.js"></script>
+	<!-- 私有函数 -->
 	<script>
-		//加载动画
+		//改加载动画的calss，倒计时移除加载动画
 		setTimeout(function () {
 			webWelcome.classList.remove('active')
 		}, 1000)
-		//会变的topNavBar
+		//改topNavBar的calss，实现高度、背景、字体颜色变化
 		window.onscroll = function (xxx) {
 			window.scrollY > 0 ? topNavBar.classList.add('sticky') : topNavBar.classList.remove('sticky')
 		}
-		//topNavBar激活hover停悬列表
+		//改topNavBar的li的calss，实现下划线menuSlide、次级菜单submenu
 		let liTags = document.querySelectorAll('nav.menu>ul>li')
 		for (let i = 0; i < liTags.length; i++) {
 			liTags[i].onmouseenter = function (x) {
@@ -226,7 +230,7 @@
 				x.currentTarget.classList.remove('active')
 			}
 		}
-		//滚动到指定元素
+		//自制topNavBar的a跳转锚点功能
 		let aTags = document.querySelectorAll('nav.menu>ul>li>a')
 		for (let i = 0; i < aTags.length; i++) {
 			aTags[i].onclick = function (xxx) {
@@ -235,9 +239,27 @@
 				let href = a.getAttribute('href')
 				let element = document.querySelector(href)
 				let top = element.offsetTop
-				window.scrollTo(0, top - 80)
+
+				//自己做跳转动画
+				var n = 25
+				var duration = 500 / n
+				var currentTop = window.scrollY
+				var targetTop = top - 80
+				var distance = (targetTop - currentTop) / n
+				var id = setInterval(function () {
+					if (n === 0) {
+						window.clearInterval(id)
+						return
+					}
+					n = n - 1
+					window.scrollTo(0, currentTop + distance * (25 - n))
+				}, duration);
 			}
 		}
+
+		//用tween缓动做跳转动画
+		//滚动页面，高亮显示相应div、对应的a下划线、
+		//滚动页面，相应div上移动画
 	</script>
 </body>
 
