@@ -10,6 +10,20 @@
 	clear: both
 }
 
+[data-x].heighLight {
+	outline: 5px red solid
+}
+
+[data-x].offset {
+	transform: translateY(100px);
+}
+
+[data-x] {
+	transform: translateY(0);
+	/* background-color: red; */
+	transition: all 0.5s;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;
@@ -143,7 +157,7 @@ body {
 	position: relative;
 }
 
-.topNavBar .menu>ul>li.active>a::after {
+.topNavBar .menu>ul>li.heighLight>a::after, .topNavBar .menu>ul>li.active>a::after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -358,45 +372,52 @@ main .introduction {
 	line-height: 36px;
 }
 
-.skillCard {
+.skills .skillCard {
 	width: 915px;
 	margin: 0 auto;
 	background-color: #FFFFFF;
 	border-radius: 4px;
 }
 
-.skillCard ul {
+.skills .skillCard ul {
 	padding: 40px 50px 0 50px;
 }
 
-.skillCard li {
+.skills .skillCard li {
 	float: left;
 	width: 48%;
 	box-sizing: border-box;
 }
 
-.skillCard li:nth-child(even) {
+.skills .skillCard li:nth-child(even) {
 	float: right;
 }
 
-.skillCard li h3 {
+.skills .skillCard li h3 {
 	color: #3D4451;
 	font-size: 14px;
 }
 
-.skillCard li .progressBar {
+.skills .skillCard li .progressBar {
 	height: 5px;
 	background-color: #FAE1E1;
 	width: 100%;
 	margin: 4px 0 50px 0;
 	border-radius: 2px;
+	overflow: hidden;
 }
 
-.skillCard li .progress {
+.skills .skillCard li .progress {
 	background-color: #E8676B;
 	height: 100%;
 	width: 70%;
 	border-radius: 2px;
+	transform: translateX(0);
+	transition: all 1s;
+}
+
+.skills.offset .skillCard li .progress {
+	transform: translateX(-100%)
 }
 
 .portfolio {
