@@ -8,5 +8,3 @@ portfolio2.onclick = function () {
 portfolio3.onclick = function () {
     portfolioBar.className = 'bar state-3';
 }
-
-
