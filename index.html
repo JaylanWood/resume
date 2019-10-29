@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 
 <head>
 	<meta charset="UTF-8">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>简历</title>
-	<link rel="stylesheet" href="css/style.css">
+	<!-- swiperjs -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 	<!-- 阿里图标 -->
 	<style type="text/css">
 		.icon {
@@ -17,6 +18,8 @@
 			overflow: hidden;
 		}
 	</style>
+	<!-- myStyle -->
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -184,147 +187,32 @@
 	<!-- 作品集 -->
 	<section data-x id="portfolio" class="portfolio">
 		<h2>作品集</h2>
-		<nav>
-			<ul>
-				<li id="portfolio1">所有</li>
-				<li id="portfolio2">原生JS &amp; CSS</li>
-				<li id="portfolio3">框架</li>
-			</ul>
-			<div id="portfolioBar" class="bar state-1">
-				<div class="bar-inner"></div>
+		<div class="swiper">
+			<!-- Slider main container -->
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<img src="./img/nav-web.jpg" class="swiper-slide"></img>
+					<img src="./img/canvas.jpg" class="swiper-slide"></img>
+					<img src="./img/swiper.jpg" class="swiper-slide"></img>
+				</div>
+				<!-- If we need pagination -->
+				<div class="swiper-pagination"></div>
 			</div>
-		</nav>
-
-		<div class="works">
-			<div class="big">
-				<img src="./img/portfolio1.jpg" alt="作品1">
-			</div>
-			<div class="small" id="protfolioImg2">
-				<img src="./img/portfolio2.jpg" alt="作品2">
-			</div>
-			<div class="small" id="protfolioImg3">
-				<img src="./img/portfolio3.jpg" alt="作品3">
-			</div>
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 		</div>
 	</section>
+	<!-- swiperjs -->
+	<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 	<!-- cdnjs的tween.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-	<script src="./js/main.js"></script>
 	<!-- 阿里图标 -->
 	<script src="//at.alicdn.com/t/font_1320333_uh02xuf8zk.js"></script>
-	<!-- 私有函数 -->
-	<script>
-		//改加载动画的calss，倒计时移除加载动画
-		setTimeout(function () {
-			webWelcome.classList.remove('active')
-		}, 0)
-
-		//改topNavBar的li的calss，实现下划线menuSlide、次级菜单submenu
-		let liTags = document.querySelectorAll('nav.menu>ul>li')
-		for (let i = 0; i < liTags.length; i++) {
-			liTags[i].onmouseenter = function (x) {
-				x.currentTarget.classList.add('active')
-			}
-			liTags[i].onmouseleave = function (x) {
-				x.currentTarget.classList.remove('active')
-			}
-		}
-		//自制topNavBar的a跳转锚点功能
-		let aTags = document.querySelectorAll('nav.menu>ul>li>a')
-
-		for (let i = 0; i < aTags.length; i++) {
-			aTags[i].onclick = function (xxx) {
-				xxx.preventDefault()
-				let a = xxx.currentTarget
-				let href = a.getAttribute('href')
-				let element = document.querySelector(href)
-				let top = element.offsetTop
-				//用tween缓动做跳转动画
-				function animate(time) {
-					requestAnimationFrame(animate);
-					TWEEN.update(time);
-				}
-				requestAnimationFrame(animate);
-
-				var currentTop = window.scrollY
-				var targetTop = top - 80
-				var time = Math.abs((targetTop - currentTop) / 100 * 500)
-				if (time > 500) {
-					time = 500
-				}
-				const coords = { y: currentTop };
-				const tween = new TWEEN.Tween(coords)
-					.to({ y: targetTop }, time)
-					.easing(TWEEN.Easing.Quadratic.InOut)
-					.onUpdate(() => {
-						window.scrollTo(0, coords.y)
-					})
-					.start();
-				//自己做跳转动画
-				// var n = 25
-				// var duration = 500 / n
-				// var currentTop = window.scrollY
-				// var targetTop = top - 80
-				// var distance = (targetTop - currentTop) / n
-				// var id = setInterval(function () {
-				// 	if (n === 0) {
-				// 		window.clearInterval(id)
-				// 		return
-				// 	}
-				// 	n = n - 1
-				// 	window.scrollTo(0, currentTop + distance * (25 - n))
-				// }, duration);
-			}
-		}
-
-		//window加载时，窗口所在位置的topNavBar变化
-		window.onload = function () {
-			window.scrollY > 0 ? topNavBar.classList.add('sticky') : topNavBar.classList.remove('sticky')
-		}
-
-		//动画remove offset
-		var heighLightTags = document.querySelectorAll('[data-x]')
-		for (var i = 0; i < heighLightTags.length; i++) {
-			heighLightTags[i].classList.add('offset')
-		}
-		//动画 页面开始
-		window.setTimeout(function () {
-			addAnimation()
-		}, 200)
-
-		//滚动页面，高亮显示相应div、对应的a下划线
-		window.onscroll = function () {
-			//改topNavBar的calss，实现高度、背景、字体颜色变化
-			window.scrollY > 0 ? topNavBar.classList.add('sticky') : topNavBar.classList.remove('sticky')
-			addAnimation()
-		}
-
-		function addAnimation() {
-			/*topNavBar的li高亮下划线*/
-			//1.根据窗口与目标div距离，找出需要高亮的[data-x]标签
-			var heighLightTags = document.querySelectorAll('[data-x]')
-			var currentTop = window.scrollY
-			var minIndex = 0;
-			for (var i = 1; i < heighLightTags.length; i++) {
-				if (Math.abs(heighLightTags[i].offsetTop - currentTop) < Math.abs(heighLightTags[minIndex].offsetTop - currentTop)) {
-					minIndex = i
-				}
-			}
-
-			//2.根据[data-x]的id找出a，a找出li
-			var id = heighLightTags[minIndex].id
-			var a = document.querySelector('a[href="#' + id + '"]')
-			var li = a.parentNode
-			var liBros = li.parentNode.children
-			for (var i = 0; i < liBros.length; i++) {
-				liBros[i].classList.remove('heighLight')
-			}
-			li.classList.add('heighLight')
-
-			//动画add offset
-			heighLightTags[minIndex].classList.remove('offset')
-		}
-	</script>
+	<!-- myScript -->
+	<script src="./js/main.js"></script>
 </body>
 
 </html>

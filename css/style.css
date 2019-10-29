@@ -4,6 +4,10 @@
 	/* border: 1px solid green; */
 }
 
+body {
+	padding-bottom: 100px;
+}
+
 .clearfix::after {
 	content: "";
 	display: block;
@@ -421,94 +425,33 @@ main .introduction {
 }
 
 .portfolio {
-	max-width: 915px;
-	margin: 0 auto;
-	text-align: center;
+	max-width: 700px;
+	margin: 0px auto;
 }
 
-.portfolio nav {
-	/* text-align: center; */
-	display: inline-block;
-	vertical-align: top;
-	margin-bottom: 30px;
+.portfolio .swiper-container {
+	width: 540px;
+	height: 405px;
 }
 
-.portfolio nav ul {
-	display: inline-block;
-	vertical-align: top;
-}
-
-.portfolio nav ul li {
-	margin: 6px 0 13px 48px;
-	display: inline-block;
-	vertical-align: top;
-	font-size: 13px;
-}
-
-.portfolio nav ul li:hover {
-	cursor: pointer;
-}
-
-.portfolio nav ul li:first-child {
-	margin-left: 0;
-}
-
-.portfolio nav .bar {
+.portfolio .swiper-button-prev, .portfolio .swiper-button-next {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
 	background-color: #FFFFFF;
-	height: 5px;
-	border-radius: 2px;
+	margin-top: 0px;
+	outline: none;
 }
 
-.portfolio nav .bar-inner {
+.portfolio .swiper-button-prev::after, .portfolio .swiper-button-next::after {
+	color: #E8676B;
+}
+
+.portfolio .swiper-container .swiper-pagination-bullet {
+	width: 12px;
+	height: 12px;
+}
+
+.swiper-pagination-bullet-active {
 	background-color: #E8676B;
-	height: 100%;
-	border-radius: 2px;
-	transition: 0.3s;
-}
-
-.portfolio nav .bar.state-0 .bar-inner {
-	width: 0%;
-	margin-left: 0%;
-}
-
-.portfolio nav .bar.state-1 .bar-inner {
-	width: 33%;
-	margin-left: 0%;
-}
-
-.portfolio nav .bar.state-2 .bar-inner {
-	width: 34%;
-	margin-left: 33%;
-}
-
-.portfolio nav .bar.state-3 .bar-inner {
-	width: 33%;
-	margin-left: 67%;
-}
-
-.portfolio .works {
-	position: relative;
-	/* border: 1px solid red; */
-	width: 915px;
-	height: 576px;
-}
-
-.portfolio .works .big, .portfolio .works .small {
-	position: absolute;
-	/* border: 1px solid green; */
-}
-
-.portfolio .works .big {
-	left: 0;
-	top: 0;
-}
-
-.portfolio .works #protfolioImg2 {
-	right: 0;
-	top: 0;
-}
-
-.portfolio .works #protfolioImg3 {
-	right: 0;
-	bottom: -4px;
 }
