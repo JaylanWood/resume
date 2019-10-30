@@ -16,12 +16,12 @@ var mySwiper = new Swiper('.swiper-container', {
 })
 
 
-//改加载动画的calss，倒计时移除加载动画
+// 页面加载动画
 setTimeout(function () {
     webWelcome.classList.remove('active')
 }, 0)
 
-//改topNavBar的li的calss，实现下划线menuSlide、次级菜单submenu
+// 导航栏li次级菜单
 let liTags = document.querySelectorAll('nav.menu>ul>li')
 for (let i = 0; i < liTags.length; i++) {
     liTags[i].onmouseenter = function (x) {
@@ -31,7 +31,7 @@ for (let i = 0; i < liTags.length; i++) {
         x.currentTarget.classList.remove('active')
     }
 }
-//自制topNavBar的a跳转锚点功能
+// 自制topNavBar的a跳转锚点功能
 let aTags = document.querySelectorAll('nav.menu>ul>li>a')
 
 for (let i = 0; i < aTags.length; i++) {
@@ -41,7 +41,7 @@ for (let i = 0; i < aTags.length; i++) {
         let href = a.getAttribute('href')
         let element = document.querySelector(href)
         let top = element.offsetTop
-        //用tween缓动做跳转动画
+        //用tween.js缓动做跳转动画
         function animate(time) {
             requestAnimationFrame(animate);
             TWEEN.update(time);
@@ -69,30 +69,31 @@ for (let i = 0; i < aTags.length; i++) {
     }
 }
 
-//window加载时，窗口所在位置的topNavBar变化
+// 页面加载，导航栏sticky
 window.onload = function () {
     window.scrollY > 0 ? topNavBar.classList.add('sticky') : topNavBar.classList.remove('sticky')
 }
 
-//动画remove offset
+// 动画remove offset
 var heighLightTags = document.querySelectorAll('[data-x]')
 for (var i = 0; i < heighLightTags.length; i++) {
     heighLightTags[i].classList.add('offset')
 }
-//动画 页面开始
+
+// 页面加载 执行data-x上升动画
 window.setTimeout(function () {
     addAnimation()
 }, 200)
 
-//滚动页面，高亮显示相应div、对应的a下划线
+// 滚动页面，执行data-x上升动画、导航栏下划线高亮
 window.onscroll = function () {
     //改topNavBar的calss，实现高度、背景、字体颜色变化
     window.scrollY > 0 ? topNavBar.classList.add('sticky') : topNavBar.classList.remove('sticky')
     addAnimation()
 }
 
+// data-x上升动画、导航栏下划线高亮
 function addAnimation() {
-    /*topNavBar的li高亮下划线*/
     //1.根据窗口与目标div距离，找出需要高亮的[data-x]标签
     var heighLightTags = document.querySelectorAll('[data-x]')
     var currentTop = window.scrollY
