@@ -9,13 +9,13 @@
         },
         bindEvents: function () {
             var view = this.view // this.view相当于一个中转站
-            window.addEventListener('scroll', function (x) {
+            window.addEventListener('scroll', () => {
                 if (window.scrollY > 0) {
                     this.active()
                 } else {
                     this.deactive()
                 }
-            }).bind(this) // 因为这是一个监听，所以this是用户滚动。要用bind()函数把bindEvents()传进来的this作为this
+            }) // 箭头函数没有this，它只能往上面代码就近的this当作自己的this。正好符合我们的需求。
         },
         active: function () {
             this.view.classList.add('sticky')
