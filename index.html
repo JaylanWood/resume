@@ -194,12 +194,26 @@
 			<div class="swiper-button-next"></div>
 		</div>
 	</section>
+	<!-- 留言 -->
+	<section class="message">
+		<h2>留言</h2>
+		<ul id='messageList'></ul>
+		<form id="postMessageForm" style="width:700px">
+			<span>用户：</span>
+			<input type="text" name="name">
+			<span>内容：</span>
+			<input type="text" name="content">
+			<input type="submit" value='提交'>
+		</form>
+	</section>
 	<!-- swiperjs -->
 	<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 	<!-- cdnjs的tween.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<!-- 阿里图标 -->
 	<script src="//at.alicdn.com/t/font_1320333_uh02xuf8zk.js"></script>
+	<!-- leancloud存储服务 -->
+	<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.js"></script>
 	<!-- myScript -->
 	<script src="./js/main.js"></script>
 	<script src="./js/loading-animation.js"></script>
@@ -208,6 +222,7 @@
 	<script src="./js/auto-slide-up.js"></script>
 	<script src="./js/sticky-topNavBar.js"></script>
 	<script src="./js/smoothly-navigation.js"></script>
+	<script src="./js/message.js"></script>
 </body>
 
 </html>
