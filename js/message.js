@@ -1,31 +1,20 @@
 ! function () {
-    var view = document.querySelector('section.message')
+    var view = View('section.message')
 
-    var model = {
-        initAV: function () {
-            AV.init({
-                appId: "mJuVhxO68GtStDWtrhFJUX8t-gzGzoHsz",
-                appKey: "heQIds6bW7KitjLNGrrYGYv8",
-            });
-        },
-        fetch: function () {
-            var query = new AV.Query('message');
-            return query.find()
-        },
-    }
+    var model = Model({
+        resourceName: 'message'
+    })
 
-    var controller = {
-        view: null,
-        model: null,
+    var controller = Controller({
+        // 1.调用Controller()，返回 window.Controller = function(options){return object} 的 object，
+        //   把返回的 object 赋值给变量 controller，
+        //   所以 controller === object。
         messageList: null,
-        init: function (view, model) {
-            this.view = view
-            this.model = model
-            this.model.initAV()
+        form: null,
+        init: function (view, controller) {
             this.messageList = view.querySelector('#messageList')
             this.form = view.querySelector('#postMessageForm')
             this.loadMessage()
-            this.bindEvents()
         },
         loadMessage: function () {
             this.model.fetch().then(
@@ -47,13 +36,12 @@
         },
         saveMessage: function () {
             let myForm = this.form
-            let content = myForm.querySelector('input[name=content]').value
             let name = myForm.querySelector('input[name=name]').value
-            var Message = AV.Object.extend('message');
-            var message = new Message();
-            message.set('name', name);
-            message.set('content', content);
-            message.save().then(function (object) {
+            let content = myForm.querySelector('input[name=content]').value
+            this.model.save({
+                'name': name,
+                'content': content
+            }).then(function (object) {
                 let li = document.createElement('li')
                 li.innerText = `${object.attributes.name}:${object.attributes.content}`
                 let messageList = document.querySelector('#messageList')
@@ -63,6 +51,10 @@
                 console.log(object)
             })
         },
-    }
-    controller.init(view, model)
+    })
+    controller.init.call(controller, view, model)
+    // 2.开始调用，根据1的结论，因为 controller === object，
+    //   所以 controller.init.call(controller, view, model)，
+    //   就是 object.init.call(object, view, model)。
+    //   所以 object.init 里的 this 就是 object。
 }.call()

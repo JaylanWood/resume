@@ -1,5 +1,5 @@
 ! function () {
-    var view = document.querySelector('.swiper')
+    var view = View('.swiper')
     var controller = {
         view: null,
         swiper: null,
