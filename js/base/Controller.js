@@ -32,5 +32,6 @@ window.Controller = function (options) {
     // 7.因为 object 是 this，但是 object 上只有 init 属性，
     //   没有 messageList、form、loadMessage、bindEvents、saveMessage 这些属性，
     //   所以 遍历 options 的属性，把除了 init 以外的属性 赋值给 object。
+  
     return object // 0.调用Controller()，返回 object
 }

@@ -11,7 +11,7 @@
         //   所以 controller === object。
         messageList: null,
         form: null,
-        init: function (view, controller) {
+        init: function (view) {
             this.messageList = view.querySelector('#messageList')
             this.form = view.querySelector('#postMessageForm')
             this.loadMessage()
