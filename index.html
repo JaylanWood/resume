@@ -23,12 +23,12 @@
 </head>
 
 <body>
-	<!-- 加载动画 -->
-	<div class="webWelcome active" id="webWelcome">
-		<div class="loading"></div>
-	</div>
+<!-- 加载动画 -->
+<div class="webWelcome active">
+	<div class="loading"></div>
+</div>
 	<!-- 导航栏 -->
-	<div id="topNavBar" class="topNavBar">
+	<div class="topNavBar">
 		<div class="topNavBarInner clearfix">
 			<a class="logo" href="#" alt="logo">
 				<span class="rs">RS</span><span class="card">card</span>
@@ -54,7 +54,7 @@
 
 						</ul>
 					</li>
-					<li><a href="#">日历</a></li>
+					<li><a href="#message">留言</a></li>
 					<li><a href="#">联系方式</a></li>
 					<li><a href="#">其他</a></li>
 				</ul>
@@ -66,7 +66,7 @@
 	<!-- 主要内容main -->
 	<main>
 		<!-- userCard -->
-		<div data-x id="about" class="userCard cardShadow">
+		<div data-x id='about' class="userCard cardShadow">
 			<div class="pictureAndText clearfix">
 				<div class="picture">
 					<img src="./img/avatar.jpg" alt="头像">
@@ -92,7 +92,7 @@
 
 						<li>
 							<dt>手机</dt>
-							<dd>13249257808</dd>
+							<dd>18520608334</dd>
 						</li>
 					</ul>
 				</div>
@@ -128,17 +128,14 @@
 		<div class="introduction-wrapper">
 			<p class="introduction">
 				你好！我是JaylanWu。专注于前端的开发人员。<br>
-				你们可能不知道只用Tegra芯片运行3A大作是什么概念。我们一般只会用两个字来形容这种机子：机霸！
-				我经常说一句话，当年乔布斯他能用iphone4运行无尽之剑，我任天堂用switch运行巫师3，不是问题。埋伏他一手，这个U不能抢，这个U不用抢，他死定了。
-				反手给一个神级优化，闷声发大财。他也神级优化？但是不用怕，他的U赢不了我。塞尔达，巫师3，很牛逼这个主机，如果把这个屏换成1080P全贴合，我这个主机将绝杀，但是换不得。
-				单走一个塞尔达，傻～逼，直接把原神走了。走他一个马里奥顶他。苏妈快点，苏妈，苏妈你APU都不要吗？苏妈你快点啊！苏妈别磨磨蹭蹭的。
-				黑暗之魂。打错了，应该打上古卷轴的。给苏妈倒杯茶好吧，苏妈给你倒一杯卡布奇诺。给苏妈倒一杯卡布奇诺！开始你的农业秀，推土推土。漂亮！
-				高通你能秒我？你能秒杀我？！你今天能用手机把switch秒了，我！当！场！就把这个手柄吃掉！！！
+				肚财说：“我们这个社会啊，就是三分靠作弊，七分靠背景。”
+				有钱人的人生
+				果然是彩色的
 			</p>
 		</div>
 	</main>
 	<!-- 技能 -->
-	<section data-x id="skills" class="skills">
+	<section data-x id='skills' class="skills">
 		<h2>技能</h2>
 		<div class="skillCard cardShadow">
 			<ul class="clearfix">
@@ -197,14 +194,28 @@
 			<div class="swiper-button-next"></div>
 		</div>
 	</section>
+	<!-- 留言 -->
+	<section data-x id="message" class="message">
+		<h2>留言</h2>
+		<ul class='messageList'></ul>
+		<form class="postMessageForm" style="width:700px">
+			<span>用户：</span>
+			<input type="text" name="name">
+			<span>内容：</span>
+			<input type="text" name="content">
+			<input type="submit" value='提交'>
+		</form>
+	</section>
 	<!-- swiperjs -->
 	<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
 	<!-- cdnjs的tween.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<!-- 阿里图标 -->
 	<script src="//at.alicdn.com/t/font_1320333_uh02xuf8zk.js"></script>
+	<!-- leancloud存储服务 -->
+	<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.js"></script>
 	<!-- myScript -->
-	<script src="./js/main.js"></script>
+	<script src="js/1单文件/main.js"></script>
 </body>
 
 </html>
