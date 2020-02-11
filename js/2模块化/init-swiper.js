@@ -1,5 +1,5 @@
 // 初始化轮播swiper.js
-!function (){
+! function () {
     var mySwiper = new Swiper('.swiper-container', {
         loop: true,
         pagination: {
