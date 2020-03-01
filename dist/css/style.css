@@ -1,0 +1,387 @@
+@charset "UTF-8";
+/* 全局属性 */
+* {
+  margin: 0;
+  padding: 0; }
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both; }
+
+body {
+  background-color: #EFEFEF;
+  color: black;
+  margin-bottom: 200px; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+ul, ol {
+  list-style: none; }
+
+h2 {
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+  color: #3D4451;
+  margin: 25px 0; }
+
+h3 {
+  font-weight: normal; }
+
+.cardShadow {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3); }
+
+/* 页面滚动高亮与上升动画 */
+[data-x].heighLight {
+  outline: 5px red solid; }
+
+[data-x].offset {
+  transform: translateY(100px); }
+
+[data-x] {
+  transform: translateY(0);
+  transition: all 0.5s; }
+
+/* 页面加载动画 */
+.webWelcome {
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  z-index: 10; }
+  .webWelcome > .loading, .webWelcome .webWelcome > .loading::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: scale-up-center 1.5s linear infinite; }
+  .webWelcome > .loading::after {
+    animation-delay: 0.75s; }
+
+.webWelcome.active {
+  display: flex; }
+
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0);
+    background-color: black; }
+  100% {
+    transform: scale(1);
+    background-color: rgba(0, 0, 0, 0); } }
+
+/* 页首导航栏 */
+.topNavBar {
+  position: fixed;
+  padding: 20px 0px;
+  width: 100%;
+  transition: all 0.5s;
+  color: #B7B7B7;
+  z-index: 9; }
+  .topNavBar .topNavBarInner {
+    padding: 0 20px; }
+    .topNavBar .topNavBarInner .logo {
+      float: left;
+      font-size: 24px;
+      font-family: 'Arial Black'; }
+      .topNavBar .topNavBarInner .logo .rs {
+        margin-right: 4px;
+        color: #E6686A; }
+      .topNavBar .topNavBarInner .logo .card {
+        color: #9A9DA2; }
+    .topNavBar .topNavBarInner .menu {
+      float: right; }
+      .topNavBar .topNavBarInner .menu > ul {
+        list-style: none; }
+        .topNavBar .topNavBarInner .menu > ul > li {
+          float: left;
+          margin: 0px 17px;
+          position: relative; }
+          .topNavBar .topNavBarInner .menu > ul > li > a {
+            font-size: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px solid transparent;
+            border-left: 0px;
+            border-right: 0px;
+            padding: 5px 0px;
+            display: block;
+            position: relative; }
+        .topNavBar .topNavBarInner .menu > ul > li.heighLight > a::after, .topNavBar .topNavBarInner .menu > ul .topNavBar .menu > ul > li.active > a::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: #e06567;
+          height: 3px;
+          animation: menuSlide 0.3s; }
+        .topNavBar .topNavBarInner .menu > ul > li.active > .submenu {
+          display: block;
+          animation: submenuSlide 0.3s; }
+      .topNavBar .topNavBarInner .menu .submenu {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: #FFFFFF;
+        color: #3D4451;
+        font-size: 0.5em;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+        cursor: pointer; }
+        .topNavBar .topNavBarInner .menu .submenu > li {
+          white-space: nowrap;
+          padding: 5px 10px; }
+
+.topNavBar.sticky {
+  background-color: #FFFFFF;
+  padding: 7px 0;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+  color: #3D4451; }
+
+@keyframes menuSlide {
+  0% {
+    width: 0; }
+  100% {
+    width: 100%; } }
+
+@keyframes submenuSlide {
+  0% {
+    margin-right: 100%; }
+  100% {
+    margin-right: 0%; } }
+
+/* 背景图片banner */
+.banner {
+  background-image: url(../img/bg_img.jpg);
+  background-position: center center;
+  background-size: cover; }
+
+.banner::after {
+  content: "";
+  display: block;
+  height: 515px;
+  background-color: rgba(0, 0, 0, 0.75); }
+
+main {
+  margin-top: -330px; }
+
+/* 简介卡 */
+.userCard {
+  max-width: 914px;
+  margin: 0 auto;
+  color: black;
+  background-color: #FFFFFF;
+  border-radius: 4px; }
+
+.userCard .picture img {
+  width: 240px;
+  height: 320px;
+  float: left;
+  margin-right: 65px; }
+
+.userCard .pictureAndText {
+  padding: 50px; }
+
+.userCard .text {
+  float: left; }
+
+.userCard .text .welcome {
+  background-color: #E8676B;
+  color: #FFFEFE;
+  padding: 4px 14px;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin: 0 0 10px 0;
+  border-radius: 2px; }
+
+.userCard .text .welcome::after {
+  content: "";
+  display: block;
+  border: 8px solid transparent;
+  width: 0;
+  height: 0;
+  border-left-color: #E8676B;
+  border-top-width: 0px;
+  position: absolute;
+  left: 5px;
+  top: 100%; }
+
+.userCard h1 {
+  padding: 12px 0; }
+
+.userCard .text hr {
+  height: 0;
+  border: none;
+  border-top: 1px solid #DEDEDE;
+  margin: 20px 0; }
+
+.userCard .text dt, .userCard .text dd {
+  float: left;
+  font-size: 14px;
+  line-height: 1.3em;
+  padding: 10px 0; }
+
+.userCard .text ul li {
+  float: left;
+  width: 100%; }
+
+.userCard .text ul li dt {
+  width: 30%;
+  font-weight: bold; }
+
+.userCard .text ul li dd {
+  width: 70%;
+  color: #B4B6BB; }
+
+.userCard .media {
+  background-color: #E8676B;
+  padding: 16px 0;
+  border-radius: 0 0 4px 4px;
+  text-align: center; }
+
+.userCard .media ul {
+  list-style: none; }
+
+.userCard .media ul li {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 20px; }
+
+.userCard .media ul li a {
+  display: block;
+  border-radius: 50%;
+  padding: 10px; }
+
+.userCard .media ul li a:hover {
+  background-color: #D05C60; }
+
+.userCard .media ul li svg {
+  width: 30px;
+  height: 30px;
+  fill: white; }
+
+/* 下载简历PDF */
+main .downloadResume-wrapper {
+  text-align: center; }
+
+main .downloadResume {
+  background-color: #EFEFEF;
+  border: 1px solid #CBCDCF;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: top;
+  padding: 20px 56px;
+  margin: 35px 0 30px 0;
+  transition: box-shadow 0.1s; }
+
+main .downloadResume:hover {
+  box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.3); }
+
+main .introduction-wrapper {
+  width: 915px;
+  margin: 0 auto; }
+
+main .introduction {
+  text-align: center;
+  font-size: 20px;
+  color: #9A9A9A;
+  line-height: 36px; }
+
+/* 技能 */
+.skills .skillCard {
+  width: 915px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border-radius: 4px; }
+
+.skills .skillCard ul {
+  padding: 40px 50px 0 50px; }
+
+.skills .skillCard li {
+  float: left;
+  width: 48%;
+  box-sizing: border-box; }
+
+.skills .skillCard li:nth-child(even) {
+  float: right; }
+
+.skills .skillCard li h3 {
+  color: #3D4451;
+  font-size: 14px; }
+
+.skills .skillCard li .progressBar {
+  height: 5px;
+  background-color: #FAE1E1;
+  width: 100%;
+  margin: 4px 0 50px 0;
+  border-radius: 2px;
+  overflow: hidden; }
+
+.skills .skillCard li .progress {
+  background-color: #E8676B;
+  height: 100%;
+  width: 70%;
+  border-radius: 2px;
+  transform: translateX(0);
+  transition: all 1s; }
+
+.skills.offset .skillCard li .progress {
+  transform: translateX(-100%); }
+
+/* 作品 */
+.portfolio {
+  max-width: 700px;
+  margin: 0px auto; }
+
+.portfolio .swiper-container {
+  width: 540px;
+  height: 405px; }
+
+.portfolio .swiper-button-prev, .portfolio .swiper-button-next {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  margin-top: 0px;
+  outline: none; }
+
+.portfolio .swiper-container .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px; }
+
+.portfolio .swiper-button-prev::after, .portfolio .swiper-button-next::after {
+  color: #E8676B; }
+
+.portfolio .swiper-pagination-bullet-active {
+  background-color: #E8676B; }
+
+/* 留言 */
+.message {
+  margin: 0 auto;
+  max-width: 700px;
+  align-items: center; }
+
+.message .messageList li {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #CBCDCF;
+  border-radius: 3px;
+  background: #FFFFFF; }
+
+.message .postMessageForm {
+  font-size: 16px;
+  padding: 30px 0px;
+  text-align: center; }
