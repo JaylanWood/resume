@@ -6,5 +6,5 @@
 
 ## 效果预览
 
-[预览地址](https://jaylanwood.github.io/resume/index.html)
+[预览地址](https://jaylanwood.github.io/resume/dist/)
 
